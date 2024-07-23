@@ -1,12 +1,13 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
+  <h1>
     <%= post.title %>
-  </p>
-
+  </h1>
+  <h4>Posted by: <%= link_to post.user.name, user_path(post.user) %></h4>
+  <h6>
+    <%= pluralize(post.views, "view") %>
+  </h6>
   <p>
-    <strong>Boy:</strong>
+    <strong>Body:</strong>
     <%= post.body %>
   </p>
-
 </div>
