@@ -60,3 +60,6 @@ end
 
 gem "devise", "~> 4.9"
 gem "pg"
+gem "database_cleaner-active_record"
+gem "factory_bot_rails"
+
