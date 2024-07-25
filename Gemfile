@@ -63,3 +63,5 @@ gem "pg"
 gem "database_cleaner-active_record"
 gem "factory_bot_rails"
 
+
+gem "noticed", "~> 1.5"
