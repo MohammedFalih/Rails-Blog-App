@@ -66,3 +66,5 @@ gem "factory_bot_rails"
 
 gem "noticed", "~> 1.5"
 gem "ransack", "~> 4.2"
+
+gem "friendly_id", "~> 5.5"
