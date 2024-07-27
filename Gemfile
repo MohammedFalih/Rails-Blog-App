@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0.beta3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -59,10 +57,8 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-gem "pg", "~> 1.1"
 gem "database_cleaner-active_record"
 gem "factory_bot_rails"
-
 
 gem "noticed", "~> 1.5"
 gem "ransack", "~> 4.2"
@@ -71,5 +67,6 @@ gem "friendly_id", "~> 5.5"
 
 gem "bullet", "~> 7.2"
 
-
 gem "activerecord-import"
+
+gem "wicked", "~> 2.0"

@@ -16,20 +16,20 @@
     </p>
     <p>
       <strong>Author</strong>
-      <%= "#{@post.user.name} | #{@post.user.email} | #{pluralize(@post.user.views, "View")}. " %>
+      <%= "#{@post.user.full_name} | #{@post.user.email} | #{pluralize(@post.user.views, "View")}. " %>
     </p>
     <div>
       <strong>Body:</strong>
       <%= @post.body %>
     </div>
     <div class="row mt-2">
-        <strong><%= pluralize(@post.comments.count, "Comment") %></strong>
-        <% @post.comments.each do |comment| %>
-            <div class="row mt-1">
-                <%= comment.user.name %>
-                <%= comment.body %>
-            </div>
-        <% end %>
+      <strong><%= pluralize(@post.comments.count, "Comment") %></strong>
+      <% @post.comments.each do |comment| %>
+        <div class="row mt-1">
+          <strong> <%= comment.user.full_name %></strong>
+          <span><%= comment.body %></span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

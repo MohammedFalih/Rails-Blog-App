@@ -20,9 +20,10 @@ class Post < ApplicationRecord
 
   ransacker :title_or_body_or_user_name do |parent|
     Arel.sql(
-      "COALESCE(#{parent.table[:title].relation.name}.title, '') || ' ' || " \
-      "COALESCE(#{parent.table[:body].relation.name}.body, '') || ' ' || " \
-      "COALESCE((SELECT users.name FROM users WHERE users.id = #{parent.table[:user_id].relation.name}.user_id), '')"
+      "COALESCE(posts.title, '') || ' ' || " \
+      "COALESCE(posts.body, '') || ' ' || " \
+      "COALESCE(users.first_name, '') || ' ' || " \
+      "COALESCE(users.last_name, '')"
     )
   end
 
