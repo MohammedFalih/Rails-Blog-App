@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_27_101328) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_28_073026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -130,11 +130,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_27_101328) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.integer "views", default: 0
     t.integer "role"
-    t.bigint "address_id"
     t.string "first_name"
     t.string "last_name"
+    t.bigint "address_id"
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -146,4 +147,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_27_101328) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "addresses"
 end

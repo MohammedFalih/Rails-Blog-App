@@ -6,11 +6,11 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
   <%= fields_for :address, resource.address do |c| %>
