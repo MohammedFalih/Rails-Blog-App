@@ -38,6 +38,10 @@ class User < ApplicationRecord
     form_steps.index(step.to_s) <= form_steps.index(form_step.to_s)
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["address_id", "created_at", "email", "encrypted_password", "first_name", "id", "id_value", "last_name", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at", "views"]
+  end
+
   private
 
   def set_default_role

@@ -22,7 +22,7 @@ Address.first_or_create!(
   state: "New York",
   zip: "12345",
   country: "USA",
-  user: falih
+  user: falih,
 )
 Address.first_or_create(
   street: "1 St.George street",
@@ -30,8 +30,13 @@ Address.first_or_create(
   state: "Paris",
   zip: "78462",
   country: "France",
-  user: tyson
+  user: tyson,
 )
+
+category = Category.first_or_create!(name: "Uncategorized", display_in_nav: true)
+Category.first_or_create!(name: "Super Cars", display_in_nav: false)
+Category.first_or_create!(name: "Super Bikes", display_in_nav: true)
+Category.first_or_create!(name: "Cars", display_in_nav: false)
 
 elapsed = Benchmark.measure do
   posts = []
@@ -41,6 +46,7 @@ elapsed = Benchmark.measure do
       title: "Title #{x}",
       body: "Body #{x} words go here..",
       user: falih,
+      category: category
     )
 
     4.times do |y|
@@ -54,6 +60,5 @@ elapsed = Benchmark.measure do
   end
   Post.import(posts, recursive: true)
 end
-
 
 puts "Seeded development DB in #{elapsed.real} seconds"

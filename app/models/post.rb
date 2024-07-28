@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
 
+  belongs_to :category
+
   has_noticed_notifications model_name: "Notification"
   has_many :notifications, through: :user
 
@@ -23,7 +25,8 @@ class Post < ApplicationRecord
       "COALESCE(posts.title, '') || ' ' || " \
       "COALESCE(posts.body, '') || ' ' || " \
       "COALESCE(users.first_name, '') || ' ' || " \
-      "COALESCE(users.last_name, '')"
+      "COALESCE(users.last_name, '') || ' ' || " \
+      "COALESCE(categories.name, '')"
     )
   end
 
@@ -32,6 +35,6 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["comments", "notifications", "user"]
+    ["comments", "notifications", "user", "category"]
   end
 end
