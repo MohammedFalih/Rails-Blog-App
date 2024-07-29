@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include SubscriptionConcern
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy

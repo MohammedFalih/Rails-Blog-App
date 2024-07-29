@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
+  root "pages#home"
+  get "about", to: "pages#about"
+
+  devise_for :controllers
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations",
+  }
+
+  get "/u/:id", to: "users#profile", as: "user"
+  
+  get "members/dashboard"
+  
   resources :categories
+  
   authenticated :user, ->(user) { user.admin? } do
     get "admin", to: "admin#index"
     get "admin/posts"
@@ -15,20 +29,10 @@ Rails.application.routes.draw do
   get "search", to: "search#index"
   # get "users/profile"
 
-  devise_for :controllers
-  devise_for :users, controllers: {
-                       sessions: "users/sessions",
-                       registrations: "users/registrations",
-                     }
-  get "/u/:id", to: "users#profile", as: "user"
-
-  resources :after_signup
-
   resources :posts do
     resources :comments
   end
+  
+  resources :after_signup
 
-  get "about", to: "pages#about"
-
-  root "pages#home"
 end
