@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_one :address, dependent: :destroy, inverse_of: :user, autosave: true
 
+  pay_customer stripe_attributes: :stripe_attributes
+
   enum role: %i[user admin]
   after_initialize :set_default_role, if: :new_record?
 
@@ -40,6 +42,18 @@ class User < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["address_id", "created_at", "email", "encrypted_password", "first_name", "id", "id_value", "last_name", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at", "views"]
+  end
+
+  def stripe_attributes(pay_customer) {
+    address: {
+      city: pay_customer.owner.city,
+      country: pay_customer.owner.country
+    },
+    metadata: {
+      pay_customer_id: pay_customer.id,
+      user_id: id
+    }
+  }
   end
 
   private
