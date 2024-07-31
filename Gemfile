@@ -60,7 +60,7 @@ gem "devise", "~> 4.9"
 gem "database_cleaner-active_record"
 gem "factory_bot_rails"
 
-gem "noticed", "~> 1.5"
+gem "noticed", "~> 2.4"
 gem "ransack", "~> 4.2"
 
 gem "friendly_id", "~> 5.5"
